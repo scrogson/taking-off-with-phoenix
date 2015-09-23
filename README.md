@@ -155,6 +155,16 @@ We are all set! Run your Phoenix application:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser
 and see your new Phoenix app running. Yay!
 
+
+## Other dependencies
+
+We will be using an elixir package which requires a C compiler such as `gcc` and
+`make` to be installed on you system.
+
+Ubuntu and Debian-based systems can get `gcc` and `make` by installing
+`build-essential` package. Also `erlang-dev` may be needed if not included in your
+Erlang/OTP version.
+
 ## Having trouble?
 
 It is vital that we get all the setup dealt with prior to the workshop so that
