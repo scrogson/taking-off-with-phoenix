@@ -88,6 +88,11 @@ The PostgreSQL wiki has [installation
 guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides) for
 a number of different systems.
 
+Be sure that a `postgres` user is created; we'll be connecting to the database with that user. Newer versions of the Homebrew scripts don't create this user that out of the box. You can add the user manually, and give it the ability to create a new database:
+```console
+createuser -d postgres
+```
+
 ### inotify-tools (for linux users)
 
 This is a Linux-only filesystem watcher that Phoenix uses for live code
