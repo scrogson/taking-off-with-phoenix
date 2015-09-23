@@ -88,10 +88,25 @@ The PostgreSQL wiki has [installation
 guides](https://wiki.postgresql.org/wiki/Detailed_installation_guides) for
 a number of different systems.
 
-Be sure that a `postgres` user is created; we'll be connecting to the database with that user. Newer versions of the Homebrew scripts don't create this user that out of the box. You can add the user manually, and give it the ability to create a new database:
-```console
-createuser -d postgres
+#### Optional configuration
+
+By default, Phoenix expects to connect to the database with user of `postgres`
+having a password of `postgres`. If this is not the case for your PostgreSQL
+installation, you can change this in `config/dev.exs` like so:
+
+```elixir
+# Configure your database
+config :support, Support.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "<change-me>",
+  password: "<change-me>",
+  database: "support_dev",
+  hostname: "localhost",
+  pool_size: 10
 ```
+
+Some installations (installing via homebrew or using Postgres.app) will use your
+username with no password.
 
 ### inotify-tools (for linux users)
 
