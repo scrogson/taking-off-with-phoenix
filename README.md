@@ -13,14 +13,16 @@ Elixir. We won't get far in a Phoenix app without it! The Elixir site maintains
 a great [Installation Page](http://elixir-lang.org/install.html) to help.
 
 If we have just installed Elixir for the first time, we will need to install the
-Hex package manager as well. Hex is necessary to get a Phoenix app running (by
+Hex package manager and Rebar as well. Hex is necessary to get a Phoenix app running (by
 installing dependencies) and to install any extra dependencies we might need
-along the way.
+along the way. Rebar is a similar tool used by many existing Erlang projects
+that we may depend on.
 
-Here's the command to install Hex:
+Here's the command to install Hex and Rebar:
 
 ```console
 $ mix local.hex
+$ mix local.rebar
 ```
 
 ### Erlang
