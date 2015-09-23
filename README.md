@@ -25,6 +25,10 @@ $ mix local.hex
 $ mix local.rebar
 ```
 
+If you are not yet familiar with Elixir, I highly recommend taking a look at the
+excellent [Getting
+Started](http://elixir-lang.org/getting-started/introduction.html) guide.
+
 ### Erlang
 
 Elixir code compiles to Erlang byte code to run on the Erlang virtual machine.
