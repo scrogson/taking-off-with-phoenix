@@ -45,6 +45,8 @@ defmodule Support.Web do
       use Phoenix.HTML
 
       import Support.Router.Helpers
+      import Support.ViewHelpers
+      import Exgravatar
     end
   end
 

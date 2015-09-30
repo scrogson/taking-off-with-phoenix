@@ -24,6 +24,8 @@ defmodule Support.Router do
     get "/register", RegistrationController, :new
     post "/register", RegistrationController, :create
 
+    resources "/issues", IssueController
+
     get "/", PageController, :index
   end
 

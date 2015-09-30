@@ -8,6 +8,7 @@
     <meta name="author" content="">
 
     <title>Hello Phoenix!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -15,7 +16,8 @@
     <div class="container" role="main">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+          <li><%= link "Home", to: page_path(@conn, :index) %></li>
+          <li><%= link "Issues", to: issue_path(@conn, :index) %></li>
         </ul>
         <span class="logo"></span>
       </div>

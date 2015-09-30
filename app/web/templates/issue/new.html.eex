@@ -1,0 +1,6 @@
+<h2>New issue</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: issue_path(@conn, :create) %>
+
+<%= link "Back", to: issue_path(@conn, :index) %>

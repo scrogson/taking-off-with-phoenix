@@ -9,6 +9,8 @@ defmodule Support.User do
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
 
+    has_many :issues, Support.Issue
+
     timestamps
   end
 

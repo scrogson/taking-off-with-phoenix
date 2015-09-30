@@ -28,7 +28,7 @@ defmodule Support.SessionController do
   def delete(conn, _params) do
     conn
     |> put_flash(:info, "logged out")
-    |> put_session(:current_user, nil)
+    |> configure_session(drop: true)
     |> redirect(to: "/")
   end
 end

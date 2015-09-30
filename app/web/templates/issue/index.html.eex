@@ -1,0 +1,24 @@
+<h2>Listing issues</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for issue <- @issues do %>
+    <tr>
+      <td>#<%= issue.id %></td>
+      <td><strong><%= link issue.title, to: issue_path(@conn, :show, issue) %></strong></td>
+      <td><%= issue.user.name %></td>
+      <td><%= status_label(issue) %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New issue", to: issue_path(@conn, :new) %>

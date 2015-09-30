@@ -1,0 +1,45 @@
+<div class="page-header">
+  <div class="container">
+    <div class="col-md-12">
+      <h3>
+        <%= @issue.title %>
+        <span class="text-muted">#<%= @issue.id %></span>
+      </h3>
+    </div>
+    <div class="col-md-9">
+      <%= status_label(@issue) %>
+      <span class="text-muted">created by</span>
+      <strong><%= @issue.user.name %></strong>
+      <span class="text-muted">on</span>
+      <strong><%= @issue.inserted_at %></strong>
+    </div>
+    <div class="col-md-3">
+      <div class="pull-right">
+        <%= link "Edit", to: issue_path(@conn, :edit, @issue), class: "btn btn-xs btn-default" %>
+        <%= link "New Issue", to: issue_path(@conn, :new), class: "btn btn-xs btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="comments">
+    <div class="media">
+      <div class="media-left">
+        <%= tag :img, src: gravatar_url(@issue.user.email, s: 48), class: "media-object img-circle" %>
+      </div>
+      <div class="media-body">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= @issue.user.name %>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <%= raw markdown(@issue.description) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
