@@ -10,5 +10,5 @@
     <%= password_input f, :password, class: "form-control" %>
   </div>
 
-  <%= submit "Sumbit", class: "btn btn-primary" %>
+  <%= submit "Submit", class: "btn btn-primary" %>
 <% end %>
