@@ -139,6 +139,10 @@ Create the database for our application:
 
 ```shell
 $ mix ecto.create
+
+If you're new to postgres and hit the role "postgres" does not exist error then this [Stack Overflow link](http://stackoverflow.com/questions/15301826/psql-fatal-role-postgres-does-not-exist) might help.  The short answer is a HomeBrew install doesn't give you the traditional Postgres db which is needed.  Execute the line below (adjust for your specific version) to get past this:
+
+```/usr/local/Cellar/postgresql/9.5.4/bin/createuser -s postgres`
 ```
 
 Install the nodejs dependencies:
@@ -178,3 +182,5 @@ It is vital that we get all the setup dealt with prior to the workshop so that
 we can focus on learning as much as possible with the limited time. Please feel
 free to [contact me](mailto:scrogson@gmail.com) directly if you have any trouble
 with getting anything setup.
+
+
