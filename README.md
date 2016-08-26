@@ -40,7 +40,7 @@ we will usually get Erlang too. If Erlang was not installed along with Elixir, p
 [Erlang Instructions](http://elixir-lang.org/install.html#installing-erlang) section of
 the Elixir Installation Page for instructions.
 
-### node.js (>= 0.12.0)
+### node.js (>= 5.0)
 
 Node is an optional dependency. Phoenix will use [brunch.io](http://brunch.io/)
 to compile static assets (javascript, css, etc), by default. Brunch.io uses the
@@ -49,7 +49,7 @@ node.js.
 
 We can get node.js from the [download page](https://nodejs.org/download/). When
 selecting a package to download, it's important to note that Phoenix requires
-version 0.12.0 or greater.
+version 5.0 or greater.
 
 Mac OS X users can also install node.js via [homebrew](http://brew.sh/).
 
@@ -57,10 +57,12 @@ Note: io.js, which is an npm compatible platform originally based on Node.js, is
 not known to work with Phoenix.
 
 Debian/Ubuntu users might see an error that looks like this:
+
 ```console
 sh: 1: node: not found
 npm WARN This failure might be due to the use of legacy binary "node"
 ```
+
 This is due to Debian having conflicting binaries for node: [discussion on
 stackoverflow](http://stackoverflow.com/questions/21168141/can-not-install-packages-using-node-package-manager-in-ubuntu)
 
@@ -79,7 +81,7 @@ $ ln -s /usr/bin/nodejs /usr/bin/node
 ### PostgreSQL
 
 We will be interacting with a database while building our application. Phoenix
-uses the database abstraction library [Ecto](https://github.com/elixir-lang/ecto)
+uses the database abstraction library [Ecto](https://github.com/elixir-ecto/ecto)
 which supports a number of databases.
 
 For this workshop, we'll be using PostgreSQL for consistency across attendees.
@@ -96,11 +98,11 @@ installation, you can change this in `config/dev.exs` like so:
 
 ```elixir
 # Configure your database
-config :support, Support.Repo,
+config :workshop, Workshop.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "<change-me>",
   password: "<change-me>",
-  database: "support_dev",
+  database: "workshop_dev",
   hostname: "localhost",
   pool_size: 10
 ```
@@ -115,61 +117,46 @@ reloading. (Mac OS X or Windows users can safely ignore it.)
 
 Linux users need to install this dependency. Please consult the [inotify-tools wiki](https://github.com/rvoicilas/inotify-tools/wiki) for distribution-specific installation instructions.
 
-### Phoenix
+### Building this application
 
-Once we have Elixir and Erlang, we are ready to install the Phoenix mix
-archive. A mix archive is a zip file which contains an application as well as
-its compiled beam files. It is tied to a specific version of the application.
-The archive is what we will use to generate a new, base Phoenix application
-which we can build from.
+Now that we have all the dependencies installed, let's clone, build, compile,
+and start it up!
 
-Here's the command to install the Phoenix archive for version 1.0.2:
+If you haven't already, clone this repo and change into the directory:
 
-```console
-$ mix archive.install https://github.com/phoenixframework/phoenix/releases/download/v1.0.2/phoenix_new-1.0.2.ez
+```shell
+$ git clone https://github.com/scrogson/taking-off-with-phoenix
+$ cd taking-off-with-phoenix
 ```
 
-> Note: if the Phoenix archive won't install properly with this command, we can
-> download the file directly from our browser, save it to the filesystem, and
-> then run: `mix archive.install /path/to/local/phoenix_new.ez`.
+Next, we'll need to fetch our Elixir dependencies:
 
-## Generating the application
-
-We're going to generate a new Phoenix application to work with throughout this
-workshop. We'll call it `support`. Navigate to a place on your filesystem where
-you want to work from and run the following:
-
-```console
-$ mix phoenix.new support
-* creating support/config/config.exs
-* creating support/config/dev.exs
-* creating support/config/prod.exs
-* creating support/config/prod.secret.exs
-...
-* creating support/config/test.exs
-* creating support/lib/support.ex
-* creating support/lib/support/endpoint.ex
-* creating support/mix.exs
-* creating support/README.md
+```shell
+$ mix deps.get
 ```
 
-Make sure to say `Y` when prompted to fetch and install dependencies and follow
-the directions in the console to get everything running.
+Create the database for our application:
 
-```console
-Fetch and install dependencies? [Yn] Y
-* running npm install && node node_modules/brunch/bin/brunch build
-* running mix deps.get
+```shell
+$ mix ecto.create
+```
 
-We are all set! Run your Phoenix application:
+Install the nodejs dependencies:
 
-    $ cd support
-    $ mix ecto.create
-    $ mix phoenix.server
+```shell
+$ npm install
+```
 
-    You can also run your app inside IEx (Interactive Elixir) as:
+We are all set! Now it's time to start the application:
 
-    $ iex -S mix phoenix.server
+```shell
+$ mix phoenix.server
+```
+
+You can also run your app inside IEx (Interactive Elixir) with:
+
+```shell
+$ iex -S mix phoenix.server
 ```
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser
